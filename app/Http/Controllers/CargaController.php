@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Carga;
+use App\Titular;
 
 class CargaController extends Controller
 {
@@ -33,9 +34,9 @@ class CargaController extends Controller
 		      $carga->save();
 		      return response()->json(['EL AFILIADO CARGA SE HA INSERTADO CON EXITO'], 201);
 		    }
-		    return $validacion_uno[1];
+		    return $validacion_dos[1];
 		}
-		return $validacion_dos[1];
+        return $validacion_uno[1];
 	}
 
 	//funcion que valida los datos ingresados. Devuelve un array con todos los msjes
@@ -43,11 +44,16 @@ class CargaController extends Controller
 	  $salida=true;
 	  $mensajes = Array();
 	    
-	  if(!is_numeric($datos['numero_documento'])){
+	  if(!is_numeric($datos['numero_documento']) && !is_null($datos['numero_documento'])){
 	    $salida=false;
 	    $mensaje1="EL NUMERO DE DOCUMENTO DEBE SER NUMERICO";
 	    array_push($mensajes, $mensaje1);
-	  }      
+      }
+      if(is_null($datos['numero_documento'])){
+	    $salida=false;
+	    $mensaje2="EL NUMERO DE DOCUMENTO ES OBLIGATORIO";
+	    array_push($mensajes, $mensaje2);
+      }   
 	  return [$salida, $mensajes];
 	}
 
