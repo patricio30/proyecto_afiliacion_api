@@ -76,5 +76,14 @@ class CargaController extends Controller
 			  }
 		  }
 		  return [$salida, $mensaje];
-	}
+    }
+    
+
+    //devuelve el titular de una carga ingresada
+    public function getTitular($id_carga){
+        $carga = Carga::find($id_carga);
+        $titular = Titular::where('id_titular', $carga->id_titular)->get();
+        return $titular;
+
+    }
 }

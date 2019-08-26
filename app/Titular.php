@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Carga;
 
 class Titular extends Model
 {
@@ -14,5 +15,4 @@ class Titular extends Model
     protected $primaryKey = 'id_titular';
 
     public $timestamps = false;
-
 }

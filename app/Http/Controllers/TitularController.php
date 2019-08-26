@@ -80,4 +80,11 @@ class TitularController extends Controller
 		  }
 		  return [$salida, $mensaje];
 	}
+
+
+	//devuelve las cargas de un titular ingresado
+	public function getCargas($id_titular){
+		$cargas = Carga::where('id_titular', $id_titular)->get();
+		return $cargas;
+	}
 }
