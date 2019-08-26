@@ -84,6 +84,5 @@ class CargaController extends Controller
         $carga = Carga::find($id_carga);
         $titular = Titular::where('id_titular', $carga->id_titular)->get();
         return $titular;
-
     }
 }

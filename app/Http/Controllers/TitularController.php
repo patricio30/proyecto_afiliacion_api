@@ -19,7 +19,7 @@ class TitularController extends Controller
         if($titular){
            return response()->json($titular, 200);
         }
-        return response()->json(["Titular no encontrado"], 404);
+        return response()->json(['Titular no encontrado'], 404);
     }
 
 	//agrega un titular a la base de datos haciendo las verif correspondientes
@@ -81,10 +81,18 @@ class TitularController extends Controller
 		  return [$salida, $mensaje];
 	}
 
-
 	//devuelve las cargas de un titular ingresado
 	public function getCargas($id_titular){
 		$cargas = Carga::where('id_titular', $id_titular)->get();
 		return $cargas;
+	}
+
+
+	public function editarTitular(Request $request){
+		$titular = Titular::where('id_titular', $request->id_titular)->first();
+		$titular->nombre = $request->nombre;
+		$titular->save();
+		return $titular;
+
 	}
 }
