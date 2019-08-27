@@ -29,3 +29,4 @@ Route::get('api/api_afiliacion/cargas', 'CargaController@getCargas');
 Route::get('api/api_afiliacion/carga/{id_carga}', 'CargaController@getCarga');
 Route::post('api/api_afiliacion/carga', 'CargaController@addCarga');
 Route::get('api/api_afiliacion/titular_carga/{id_carga}', 'CargaController@getTitular');
+Route::post('api/api_afiliacion/editar_carga', 'CargaController@editarCarga');

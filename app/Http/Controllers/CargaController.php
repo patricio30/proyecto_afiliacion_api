@@ -84,5 +84,13 @@ class CargaController extends Controller
         $carga = Carga::find($id_carga);
         $titular = Titular::where('id_titular', $carga->id_titular)->get();
         return $titular;
-    }
+	}
+	
+	public function editarCarga(Request $request){
+		$carga = Carga::where('id_carga', $request->id_carga)->first();
+		$carga->apellido = $request->apellido;
+		$carga->nombre = $request->nombre;
+		$carga->save();
+		return response()->json(['EL AFILIADO CARGA SE HA ACTUALIZADO CON EXITO'], 201);
+	}
 }
