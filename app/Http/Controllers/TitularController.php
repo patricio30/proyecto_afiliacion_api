@@ -19,7 +19,7 @@ class TitularController extends Controller
         if($titular){
            return response()->json($titular, 200);
         }
-        return response()->json(['Titular no encontrado'], 404);
+        return response()->json('Titular no encontrado', 404);
     }
 
 	//agrega un titular a la base de datos haciendo las verif correspondientes
@@ -33,7 +33,7 @@ class TitularController extends Controller
 		    if($validacion_dos[0]){//SI NO EXISTE 
 		      $titular=Titular::create($datos);
 		      $titular->save();
-		      return response()->json(['EL AFILIADO TITULAR SE HA INSERTADO CON EXITOo'], 201);
+		      return response()->json(['EL AFILIADO TITULAR SE HA INSERTADO CON EXITO'], 201);
 		    }
 		    return $validacion_dos[1];
 		}
@@ -54,7 +54,17 @@ class TitularController extends Controller
 	    $salida=false;
 	    $mensaje2="EL NUMERO DE DOCUMENTO ES OBLIGATORIO";
 	    array_push($mensajes, $mensaje2);
-      }     
+	  }  
+	  if(is_null($datos['nombre'])){
+	    $salida=false;
+	    $mensaje3="EL NOMBRE ES OBLIGATORIO";
+	    array_push($mensajes, $mensaje3);
+	  }
+	  if(is_null($datos['apellido'])){
+	    $salida=false;
+	    $mensaje4="EL APELLIDO ES OBLIGATORIO";
+	    array_push($mensajes, $mensaje4);
+      }   
 	  return [$salida, $mensajes];
 	}
 
@@ -90,9 +100,9 @@ class TitularController extends Controller
 
 	public function editarTitular(Request $request){
 		$titular = Titular::where('id_titular', $request->id_titular)->first();
+		$titular->apellido = $request->apellido;
 		$titular->nombre = $request->nombre;
 		$titular->save();
-		return $titular;
-
+		return response()->json(['EL AFILIADO TITULAR SE HA ACTUALIZADO CON EXITO'], 201);
 	}
 }
