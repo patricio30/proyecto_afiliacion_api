@@ -16,8 +16,8 @@ El proyecto fue implementado con el framework Laravel, el cual consiste en el ma
 El sistema esta basado en una institucion que cuenta con afiliados tanto titulares como cargas
 
 Las condiciones son las siguientes:
-1- Un titular puede tener una o mas cargas
-2- Una carga debe tener si o si un titular
+- **1- Un titular puede tener una o mas cargas**
+- **2- Una carga debe tener si o si un titular**
 
 Funciones:
 1- Dar de alta a un afiliado TITULAR
