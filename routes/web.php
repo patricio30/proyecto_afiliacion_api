@@ -23,6 +23,7 @@ Route::get('api/api_afiliacion/titular/{id_titular}', 'TitularController@getTitu
 Route::post('api/api_afiliacion/titular', 'TitularController@addTitular');
 Route::get('api/api_afiliacion/cargas_titular/{id_titular}', 'TitularController@getCargas');
 Route::post('api/api_afiliacion/editar_titular', 'TitularController@editarTitular');
+Route::get('api/api_afiliacion/buscar_titular/{numero_documento}', 'TitularController@buscarTitular');
 
 
 //rutas para cargas
@@ -31,3 +32,4 @@ Route::get('api/api_afiliacion/carga/{id_carga}', 'CargaController@getCarga');
 Route::post('api/api_afiliacion/carga', 'CargaController@addCarga');
 Route::get('api/api_afiliacion/titular_carga/{id_carga}', 'CargaController@getTitular');
 Route::post('api/api_afiliacion/editar_carga', 'CargaController@editarCarga');
+Route::get('api/api_afiliacion/buscar_carga/{numero_documento}', 'CargaController@buscarCarga');

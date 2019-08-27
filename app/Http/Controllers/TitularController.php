@@ -105,4 +105,12 @@ class TitularController extends Controller
 		$titular->save();
 		return response()->json(['EL AFILIADO TITULAR SE HA ACTUALIZADO CON EXITO'], 201);
 	}
+
+	public function buscarTitular($numero_documento){
+		$titular = Titular::where('numero_documento', $numero_documento)->first();
+		if($titular){
+			return response()->json($titular, 200);
+		 }
+		 return response()->json('Titular no encontrado', 404);
+	}
 }

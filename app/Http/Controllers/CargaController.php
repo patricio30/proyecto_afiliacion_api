@@ -94,4 +94,12 @@ class CargaController extends Controller
 		$carga->save();
 		return response()->json(['EL AFILIADO CARGA SE HA ACTUALIZADO CON EXITO'], 201);
 	}
+
+	public function buscarCarga($numero_documento){
+		$carga = Carga::where('numero_documento', $numero_documento)->first();
+		if($carga){
+			return response()->json($carga, 200);
+		 }
+		 return response()->json('Afiliado carga no encontrado', 404);
+	}
 }
