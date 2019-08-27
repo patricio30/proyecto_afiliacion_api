@@ -86,6 +86,7 @@ class CargaController extends Controller
         return $titular;
 	}
 	
+	//permite editar a una carga
 	public function editarCarga(Request $request){
 		$carga = Carga::where('id_carga', $request->id_carga)->first();
 		$carga->apellido = $request->apellido;

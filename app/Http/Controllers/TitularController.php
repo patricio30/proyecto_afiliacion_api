@@ -97,6 +97,7 @@ class TitularController extends Controller
 		return $cargas;
 	}
 
+	//permite editar a un titular
 	public function editarTitular(Request $request){
 		$titular = Titular::where('id_titular', $request->id_titular)->first();
 		$titular->apellido = $request->apellido;
